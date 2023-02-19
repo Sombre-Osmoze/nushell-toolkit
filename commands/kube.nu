@@ -12,4 +12,20 @@ module kube {
 			echo "mutliple files found, which one do you want?"
 		}
 	}
+
+	export def pods [] {
+		kubectl get pods | detect columns
+	}
+
+	export def deploy [] {
+		kubectl get deployment | detect columns
+	}
+
+	export def ingress [] {
+		kubectl get ingress | detect columns
+	}
+
+	export def secrets [] {
+		kubectl get secrets | detect columns
+	}
 }
