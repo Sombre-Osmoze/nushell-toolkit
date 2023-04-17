@@ -6,7 +6,7 @@ module npm {
 	def "nu-complete npm uninstall package" [] {
 	 	let dependencies = (open package.json | get dependencies | transpose package version | get package)
 		let devDependencies = (open package.json | get devDependencies | transpose package version | get package)
-		return $dependencies | append $devDependencies  	 	 
+		($dependencies | append $devDependencies)  	 	 
 	}
 
 	export extern "npm run" [
