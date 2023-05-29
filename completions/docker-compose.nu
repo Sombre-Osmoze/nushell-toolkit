@@ -8,12 +8,12 @@ module docker-compose {
 	}
 
 	export extern "docker compose up" [
-		service?: string@"nu-complete docker compose available services" 
+		...service: string@"nu-complete docker compose available services" 
 		--detach(-d)  # Run the code in detach mode
 	]
 
 	export extern "docker compose stop" [
-		service?: string@"nu-complete docker compose running services" 
+		...service: string@"nu-complete docker compose running services" 
 	]
 
 }
