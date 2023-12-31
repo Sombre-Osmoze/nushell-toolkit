@@ -8,6 +8,9 @@ module kube {
 		if ($files | length) == 1 {
 			print $"setup KUBECONFIG with ($files.0)"
 			$env.KUBECONFIG = (realpath $files.0)	
+		} else if ($files | lenght) > 1 { 
+			print "no file found"
+			exit
 		} else {
 			echo "mutliple files found, which one do you want?"
 		}
