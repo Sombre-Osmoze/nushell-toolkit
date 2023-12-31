@@ -15,6 +15,5 @@ module docker-compose {
 	export extern "docker compose stop" [
 		...service: string@"nu-complete docker compose running services" 
 	]
-
 }
 
