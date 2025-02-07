@@ -8,12 +8,19 @@ module docker-compose {
 	}
 
 	export extern "docker compose up" [
-		...service: string@"nu-complete docker compose available services" 
+		...service: string@"nu-complete docker compose available services"
 		--detach(-d)  # Run the code in detach mode
+		--wait(-w) # Wait for health checks
 	]
 
 	export extern "docker compose stop" [
-		...service: string@"nu-complete docker compose running services" 
+		...service: string@"nu-complete docker compose running services"
 	]
+
+	export extern "docker compose down" [
+		...service: string@"nu-complete docker compose available services"
+		--volumes(-v)  # Remove volumes
+	]
+
 }
 
