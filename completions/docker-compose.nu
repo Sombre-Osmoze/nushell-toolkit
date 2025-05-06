@@ -7,6 +7,19 @@ module docker-compose {
 		docker compose ps | detect columns | get service
 	}
 
+	def "nu-complete docker compose commands" [] {
+		["down", "up", "stop"]
+	}
+
+	def "nu-complete docker compose profiles" [] {
+		open (ls docker-compose*).0.name | get services | transpose name values | get values.profiles | flatten | uniq
+	}
+
+	export extern "docker compose" [
+		--profile(-p): string@"nu-complete docker compose profiles" 
+		command: string@"nu-complete docker compose profiles"
+	]
+
 	export extern "docker compose up" [
 		...service: string@"nu-complete docker compose available services"
 		--detach(-d)  # Run the code in detach mode
