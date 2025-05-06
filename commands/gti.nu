@@ -1,9 +1,9 @@
 use std/log
 
 module gti {
-	# export def status [] {
-	# 	git status --porcelain | lines | parse "{status} {file}"				
-	# }
+	export def status [] {
+		git status --porcelain | lines | parse "{status} {file}"				
+	}
 
 
     # List all remotes available in the repository
@@ -24,6 +24,7 @@ module gti {
 		--remote(-r): string@"remote list" # The remote to use default to the first remote return by `git remote`.
 	]: nothing -> nothing {
 		# Remote to fetch or otherwise default remote of the rempository
+
 		let $remote_to_fetch = if $remote != null { $remote } else { remote list | first }
 		log debug $"using remote ($remote_to_fetch)"
 
