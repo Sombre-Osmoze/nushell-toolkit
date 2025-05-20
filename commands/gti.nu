@@ -35,6 +35,11 @@ module gti {
 		git fetch --quiet $remote_to_fetch $reference
 		log debug $"fetched ($remote_to_fetch)/($reference)"
 
-		git switch --create $branch --no-track $"($remote_to_fetch)/($reference)"
+
+		if $reference starts-with "tags" {
+			git switch --detach --create $branch --no-track ($reference)
+		} else {
+			git switch --create $branch --no-track $"($remote_to_fetch)/($reference)"
+		}
 	}		
 }
