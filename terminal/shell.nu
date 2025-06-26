@@ -29,15 +29,16 @@ module path_widget {
             }
         }
 
-        let dir = ([
-            ($env.PWD | str substring 0..($home | str length) | str replace $home "~"),
-            ($env.PWD | str substring ($home | str length)..)
-        ] | str join)
+		let text = if ($env.PWD == $home) {
+			"~"
+		} else {
+			$env.PWD | path basename
+		}
 
         let path_segment = if (is-admin) {
-            $"(ansi red_bold)($dir)"
+            $"(ansi yellow_bold)($text)"
         } else {
-            $"(ansi red_bold)(basename $env.PWD)"
+            $"(ansi red_bold)($text)"
         }
         $path_segment
     }
