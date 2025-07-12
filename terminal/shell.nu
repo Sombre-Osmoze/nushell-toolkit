@@ -1,19 +1,7 @@
 use ../library/paths.nu directory
 
-module git_widget {
-    export def is_needed [tree: list<path>]: nothing -> bool {
-        let gitFolders = $tree | each { |dir| 
-            let git_dir = ($dir | path join '.git')
-            if ($git_dir | path exists) { $dir }
-        } | compact
-        $gitFolders | is-not-empty
-    }
 
-    export def letft_prompt []: nothing -> string {
-        let reference_name = git branch --show-current
-        $" ($reference_name)"
-    }
-}
+
 module path_widget {
     export def is_needed [] {
         true
@@ -44,7 +32,7 @@ module path_widget {
     }
 }
 
-use git_widget
+use widgets/git.widget.nu git_widget
 use path_widget
 
 
