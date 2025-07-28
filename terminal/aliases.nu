@@ -1,0 +1,2 @@
+
+alias raw = open -r
