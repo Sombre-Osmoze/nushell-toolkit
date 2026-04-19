@@ -17,18 +17,18 @@ module kube {
 	}
 
 	export def pods [] {
-		kubectl get pods | detect columns
+		kubectl get pods | from ssv
 	}
 
 	export def deploy [] {
-		kubectl get deployment | detect columns
+		kubectl get deployment | from ssv
 	}
 
 	export def ingress [] {
-		kubectl get ingress | detect columns
+		kubectl get ingress | from ssv
 	}
 
 	export def secrets [] {
-		kubectl get secrets | detect columns
+		kubectl get secrets | from ssv
 	}
 }

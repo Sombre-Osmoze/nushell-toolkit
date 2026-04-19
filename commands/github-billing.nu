@@ -59,4 +59,4 @@ module github-billing {
     }
 }
 
-use billing *
+use github-billing *

@@ -22,8 +22,8 @@ def "top level folders" [] {
 def "keep only old folders" [folders: list] {
     mut olderFolders: list = []
     for $folder in $folders {
-        let parentFolder = ls ( $folder.name | path dirname ) | sort-by modified | reverse | get 0
-        if ($parentFolder.modified < (date now) - 30day) {
+        let parentFolder = ls -d ( $folder.name | path dirname ) | sort-by modified | reverse | get 0
+        if ($parentFolder.modified < (date now) - 24hr) {
             $olderFolders = $olderFolders | append $folder
         }
     }
